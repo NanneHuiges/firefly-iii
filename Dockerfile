@@ -3,7 +3,7 @@ FROM php:7.2-apache
 # If building on a RPi, use --build-arg cores=3 to use all cores when compiling
 # to speed up the image build
 ARG CORES
-ENV CORES ${CORES:-1}
+ENV CORES 3
 
 ENV FIREFLY_PATH /var/www/firefly-iii/
 ENV CURL_VERSION 7.60.0
@@ -37,27 +37,28 @@ RUN apt-get update -y && \
                                                apt-get clean && \
                                                rm -rf /var/lib/apt/lists/*
 # LDAP install
-RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && docker-php-ext-install ldap
+# RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && docker-php-ext-install ldap
+RUN docker-php-ext-configure ldap --with-libdir=lib/$(gcc -dumpmachine)/ && docker-php-ext-install ldap
 
 # Install latest curl
-RUN cd /tmp && \
-    wget https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz && \
-    tar -xvf openssl-${OPENSSL_VERSION}.tar.gz && \
-    cd openssl-${OPENSSL_VERSION} && \
-    ./config && \
-    make -j${CORES} && \
-    make install
+# RUN cd /tmp && \
+#    wget https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz && \
+#    tar -xvf openssl-${OPENSSL_VERSION}.tar.gz && \
+#    cd openssl-${OPENSSL_VERSION} && \
+#    ./config && \
+#    make -j${CORES} && \
+#    make install
 
-RUN cd /tmp && \
-    wget https://curl.haxx.se/download/curl-${CURL_VERSION}.tar.gz && \
-    tar -xvf curl-${CURL_VERSION}.tar.gz && \
-    cd curl-${CURL_VERSION} && \
-    ./configure --with-ssl --host=$(gcc -dumpmachine) && \
-    make -j${CORES} && \
-    make install
+#RUN cd /tmp && \
+#    wget https://curl.haxx.se/download/curl-${CURL_VERSION}.tar.gz && \
+#    tar -xvf curl-${CURL_VERSION}.tar.gz && \
+#    cd curl-${CURL_VERSION} && \
+#    ./configure --with-ssl --host=$(gcc -dumpmachine) && \
+#    make -j${CORES} && \
+#    make install
 
 # Make sure that libcurl is using the newer curl libaries
-RUN echo "/usr/local/lib" >> /etc/ld.so.conf.d/00-curl.conf && ldconfig
+#RUN echo "/usr/local/lib" >> /etc/ld.so.conf.d/00-curl.conf && ldconfig
 
 # Mimic the Debian/Ubuntu config file structure for supervisor
 COPY .deploy/docker/supervisord.conf /etc/supervisor/supervisord.conf
@@ -107,7 +108,7 @@ WORKDIR $FIREFLY_PATH
 ADD . $FIREFLY_PATH
 
 # Fix the link to curl:
-RUN rm -rf /usr/local/lib/libcurl.so.4 && ln -s /usr/lib/x86_64-linux-gnu/libcurl.so.4.4.0 /usr/local/lib/libcurl.so.4
+# RUN rm -rf /usr/local/lib/libcurl.so.4 && ln -s /usr/lib/x86_64-linux-gnu/libcurl.so.4.4.0 /usr/local/lib/libcurl.so.4
 
 # Run composer
 RUN composer install --prefer-dist --no-dev --no-scripts --no-suggest
