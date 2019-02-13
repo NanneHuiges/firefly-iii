@@ -31,11 +31,9 @@ return [
     'prerequisites_breadcrumb_ynab'       => 'Pré-requisitos para YNAB',
     'job_configuration_breadcrumb'        => 'Configuração para ":key"',
     'job_status_breadcrumb'               => 'Status de importação para ":key"',
-    'cannot_create_for_provider'          => 'Firefly III não pode criar um trabalho para o provedor ":provider".',
     'disabled_for_demo_user'              => 'desativado no modo demonstração',
 
     // index page:
-    'general_index_title'                 => 'Importar um arquivo',
     'general_index_intro'                 => 'Bem-vindo à rotina de importação do Firefly III. Existem algumas maneiras de importar dados no Firefly III; elas estão mostradas aqui como botões.',
 
     // import provider strings (index):
@@ -50,9 +48,6 @@ return [
     'button_fints'                        => 'Importar usando FinTS',
 
 
-    // global config box (index)
-    'global_config_title'                 => 'Configuração global de importação',
-    'global_config_text'                  => 'No futuro, esta caixa terá preferências que se aplicam a TODOS os provedores de importação acima.',
     // prerequisites box (index)
     'need_prereq_title'                   => 'Pré-requisitos de importação',
     'need_prereq_intro'                   => 'Alguns metodos de importacao necessitam da tua atencao antes que possam ser usados. Por exemplo, eles podem necessitar de uma chave especial da API. Podes configurar tudo aqui. O icon indica se esses pre-requesitos foram cumpridos.',
@@ -65,17 +60,6 @@ return [
     'do_prereq_quovo'                     => 'Pre-requesitos para a importacao do Quovo',
     'do_prereq_ynab'                      => 'Pre-requesitos para a importacao do YNAB',
 
-    // provider config box (index)
-    'can_config_title'                    => 'Importar configuracao',
-    'can_config_intro'                    => 'Alguns metodos de importacao podem ser configurados ao teu gosto. Eles contem propriedades extra que podes ajustar.',
-    'do_config_fake'                      => 'Configuracao para o provedor ficticio',
-    'do_config_file'                      => 'Configuracao para a importacao de ficheiros',
-    'do_config_bunq'                      => 'Configuracao para a importacao pelo bunq',
-    'do_config_spectre'                   => 'Configuracao para a importacao pelo Spectre',
-    'do_config_plaid'                     => 'Configuracao para a importacao pelo Plaid',
-    'do_config_yodlee'                    => 'Configuracao para a importacao pelo Yodlee',
-    'do_config_quovo'                     => 'Configuracao para a importacao pelo Quovo',
-
     // prerequisites:
     'prereq_fake_title'                   => 'Configuracao para a importacao pelo provedor de importacao ficticio',
     'prereq_fake_text'                    => 'Este provedor ficticio necessita de uma chave API ficticia. Ela tem de conter 32 caracteres de comprimento. Podes usar esta: 123456789012345678901234567890AA',
@@ -83,11 +67,11 @@ return [
     'prereq_spectre_text'                 => 'Para importar dados usando a API do Spectre (v4), deves fornecer ao Firefly III 2 codigos secretos. Eles podem ser encontrados na seguinte <a href="https://www.saltedge.com/clients/profile/secrets">pagina</a>.',
     'prereq_spectre_pub'                  => 'Da mesma forma, a API do Spectre necessita de saber a chave publica que ves em baixo. Sem ela, nao te vai reconhecer. Por favor introduz esta chave publica na seguinte <a href="https://www.saltedge.com/clients/profile/secrets">pagina</a>.',
     'prereq_bunq_title'                   => 'Pre-requesitos para uma importaca pelo bunq',
-    'prereq_bunq_text'                    => 'In order to import from bunq, you need to obtain an API key. You can do this through the app. Please note that the import function for bunq is in BETA. It has only been tested against the sandbox API.',
-    'prereq_bunq_ip'                      => 'bunq requires your externally facing IP address. Firefly III has tried to fill this in using <a href="https://www.ipify.org/">the ipify service</a>. Make sure this IP address is correct, or the import will fail.',
-    'prereq_ynab_title'                   => 'Prerequisites for an import from YNAB',
-    'prereq_ynab_text'                    => 'In order to be able to download transactions from YNAB, please create a new application on your <a href="https://app.youneedabudget.com/settings/developer">Developer Settings Page</a> and enter the client ID and secret on this page.',
-    'prereq_ynab_redirect'                => 'To complete the configuration, enter the following URL at the <a href="https://app.youneedabudget.com/settings/developer">Developer Settings Page</a> under the "Redirect URI(s)".',
+    'prereq_bunq_text'                    => 'Para importar do bunq, precisas de obter uma chave da API. Podes fazer isso atraves da app. De notar que a importacao do bunq este em fase BETA. Ela so tem vindo a ser testada na API sandbox.',
+    'prereq_bunq_ip'                      => 'o bunq necessita do teu endereco IP externo. O Firefly III tentou preencher esse valor usando <a href="https://www.ipify.org/">o servico ipify</a>. Verifica que este endereco de IP e correcto, ou a importacao vai falhar.',
+    'prereq_ynab_title'                   => 'Pre-requesitos para uma importacao de YNAB',
+    'prereq_ynab_text'                    => 'Para poderes descarregar as transaccoes do YNAB, por favor cria uma nova aplicacao na tua <a href="https://app.youneedabudget.com/settings/developer">Pagina de Configuracoes de Desenvolvedor</a> e introduz o ID e a senha de cliente nesta pagina.',
+    'prereq_ynab_redirect'                => 'Para completar a configuracao, introduz o seguinte URL na <a href="https://app.youneedabudget.com/settings/developer">Pagina de Configuracoes de Desenvolvedor</a>, sobre a area de "Redirect URI(s)".',
     'callback_not_tls'                    => 'Firefly III has detected the following callback URI. It seems your server is not set up to accept TLS-connections (https). YNAB will not accept this URI. You may continue with the import (because Firefly III could be wrong) but please keep this in mind.',
     // prerequisites success messages:
     'prerequisites_saved_for_fake'        => 'Fake API key stored successfully!',
@@ -138,7 +122,6 @@ return [
     'spectre_login_new_login'             => 'Login with another bank, or one of these banks with different credentials.',
     'job_config_spectre_accounts_title'   => 'Seleccionar as contas de onde vai importar',
     'job_config_spectre_accounts_text'    => 'You have selected ":name" (:country). You have :count account(s) available from this provider. Please select the Firefly III asset account(s) where the transactions from these accounts should be stored. Remember, in order to import data both the Firefly III account and the ":name"-account must have the same currency.',
-    'spectre_no_supported_accounts'       => 'You cannot import from this account due to a currency mismatch.',
     'spectre_do_not_import'               => '(nao importar)',
     'spectre_no_mapping'                  => 'It seems you have not selected any accounts to import from.',
     'imported_from_account'               => 'Importado de ":account"',
@@ -307,6 +290,7 @@ return [
     'column_opposing-name'            => 'Conta contrária (nome)',
     'column_rabo-debit-credit'        => 'Indicador de débito/crédito específico do Rabobank',
     'column_ing-debit-credit'         => 'Indicador de débito/crédito específico do ING',
+    'column_generic-debit-credit'     => 'Generic bank debit/credit indicator',
     'column_sepa-ct-id'               => 'SEPA identificador end-to-end',
     'column_sepa-ct-op'               => 'SEPA Identificador de conta de contrária',
     'column_sepa-db'                  => 'SEPA Identificador de Mandato',

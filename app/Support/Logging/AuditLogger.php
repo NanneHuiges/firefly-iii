@@ -1,7 +1,8 @@
 <?php
+
 /**
- * INGDebitCredit.php
- * Copyright (c) 2017 thegrumpydictator@gmail.com
+ * AuditLogger.php
+ * Copyright (c) 2019 thegrumpydictator@gmail.com
  *
  * This file is part of Firefly III.
  *
@@ -18,36 +19,26 @@
  * You should have received a copy of the GNU General Public License
  * along with Firefly III. If not, see <http://www.gnu.org/licenses/>.
  */
+
 declare(strict_types=1);
 
-namespace FireflyIII\Import\Converter;
-
-use Log;
+namespace FireflyIII\Support\Logging;
 
 /**
- * Class INGDebitCredit.
+ * Class AuditLogger
  */
-class INGDebitCredit implements ConverterInterface
+class AuditLogger
 {
     /**
-     * Convert Af or Bij to correct integer values.
+     * Customize the given logger instance.
      *
-     * @param $value
+     * @param  \Illuminate\Log\Logger $logger
      *
-     * @return int
+     * @return void
      */
-    public function convert($value): int
+    public function __invoke($logger)
     {
-        Log::debug('Going to convert ing debit credit', ['value' => $value]);
-
-        if ('Af' === $value) {
-            Log::debug('Return -1');
-
-            return -1;
-        }
-
-        Log::debug('Return 1');
-
-        return 1;
+        $processor  = new AuditProcessor;
+        $logger->pushProcessor($processor);
     }
 }

@@ -25,6 +25,7 @@ declare(strict_types=1);
 return [
     'iban'                           => 'To nie jest prawidłowy IBAN.',
     'zero_or_more'                   => 'Wartość nie może być ujemna.',
+    'date_or_time'                   => 'The value must be a valid date or time value (ISO 8601).',
     'source_equals_destination'      => 'Konto źródłowe jest równe kontu docelowemu.',
     'unique_account_number_for_user' => 'Wygląda na to, że ten numer konta jest już w użyciu.',
     'unique_iban_for_user'           => 'Wygląda na to, że ten IBAN jest już używany.',
@@ -125,7 +126,7 @@ return [
     'unique_piggy_bank_for_user'     => 'Nazwa skarbonki musi być unikalna.',
     'secure_password'                => 'To nie jest bezpieczne hasło. Proszę spróbować ponownie. Aby uzyskać więcej informacji odwiedź https://bit.ly/FF3-password-security',
     'valid_recurrence_rep_type'      => 'Nieprawidłowy typ powtórzeń dla cyklicznych transakcji.',
-    'valid_recurrence_rep_moment'    => 'Invalid repetition moment for this type of repetition.',
+    'valid_recurrence_rep_moment'    => 'Nieprawidłowy moment powtórzenia dla tego typu powtórzenia.',
     'invalid_account_info'           => 'Nieprawidłowe informacje o koncie.',
     'attributes'                     => [
         'email'                   => 'adres e-mail',

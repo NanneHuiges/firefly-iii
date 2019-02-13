@@ -30,6 +30,7 @@ Route::group(
     Route::post('keys', ['uses' => 'InstallController@keys', 'as' => 'keys']);
     Route::post('upgrade', ['uses' => 'InstallController@upgrade', 'as' => 'upgrade']);
     Route::post('verify', ['uses' => 'InstallController@verify', 'as' => 'verify']);
+    Route::post('decrypt', ['uses' => 'InstallController@decrypt', 'as' => 'decrypt']);
 }
 );
 
@@ -371,7 +372,7 @@ Route::group(
     ['middleware' => 'user-full-auth', 'namespace' => 'FireflyIII\Http\Controllers\Chart', 'prefix' => 'chart/category', 'as' => 'chart.category.'],
     function () {
 
-        Route::get('frontpage', ['uses' => 'CategoryController@frontpage', 'as' => 'frontpage']);
+        Route::get('frontpage', ['uses' => 'CategoryController@frontPage', 'as' => 'frontpage']);
         Route::get('period/{category}', ['uses' => 'CategoryController@currentPeriod', 'as' => 'current']);
         Route::get('period/{category}/{date}', ['uses' => 'CategoryController@specificPeriod', 'as' => 'specific']);
         Route::get('all/{category}', ['uses' => 'CategoryController@all', 'as' => 'all']);
